@@ -1,8 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:untitled/screens/000_login/LoginPage.dart';
-import 'package:untitled/screens/001_main/TelaPrincipal.dart';
+import 'package:untitled/screens/002_main/TelaPrincipal.dart';
+
+import '../001_login/LoginPage.dart';
 
 class TelaDeCarregamentoPrincipal extends StatelessWidget {
   @override
@@ -10,8 +11,8 @@ class TelaDeCarregamentoPrincipal extends StatelessWidget {
     return MaterialApp(
       home: SplashPage(),
       routes: {
-        // '/login': (context) => TelaPrincipal(),
-        '/login': (context) => LoginPage(),
+        '/login': (context) => TelaPrincipal(),
+        // '/login': (context) => LoginPage(),
       },
     );
   }

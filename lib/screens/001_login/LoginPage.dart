@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/screens/others/ClienteCadastroPage.dart';
+
+import '../002_main/TelaPrincipal.dart';
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -13,20 +15,27 @@ class _LoginPageState extends State<LoginPage> {
     setState(() {
       isUserValid = userController.text.isNotEmpty;
       isPasswordValid = passwordController.text.isNotEmpty;
-      if (isUserValid && isPasswordValid) {
-        // Campos válidos, fazer a lógica de autenticação aqui
-        print('Campos válidos');
-        // Chamar a página de cadastro do cliente
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => CadastroClientePage()),
-        );
-      } else {
-        // Campos inválidos, exibir mensagem de erro ou tomar a ação necessária
-        print('Campos inválidos');
-      }
+      validarSenhaDigitada();
     });
   }
+
+
+  void validarSenhaDigitada() {
+    if (isUserValid && isPasswordValid) {
+      // Campos válidos, fazer a lógica de autenticação aqui
+      print('Campos válidos');
+      // Chamar a página de cadastro do cliente
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => TelaPrincipal()),
+      );
+    } else {
+      // Campos inválidos, exibir mensagem de erro ou tomar a ação necessária
+      print('Campos inválidos');
+    }
+  }
+
+
   void _pular() {
     setState(() {
         Navigator.pushReplacement(
@@ -35,6 +44,7 @@ class _LoginPageState extends State<LoginPage> {
         );
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(height: 20.0),
             ElevatedButton(
               onPressed: _pular,
-              child: Text('pular login'),
+              child: Text('outra tela'),
             ),
           ],
         ),

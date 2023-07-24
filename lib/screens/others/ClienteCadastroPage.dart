@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:untitled/screens/others/CarouselPage.dart';
 import 'package:untitled/screens/others/CepEnvio.dart';
-import 'package:untitled/screens/000_login/TelaLoginTeste.dart';
+import 'package:untitled/screens/001_login/TelaLoginTeste.dart';
 
 class CadastroClientePage extends StatefulWidget {
   @override

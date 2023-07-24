@@ -1,41 +1,37 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+
 class CepEnvio extends StatefulWidget {
   @override
   _CepEnvioState createState() => _CepEnvioState();
 }
+
 class _CepEnvioState extends State<CepEnvio> {
   TextEditingController _cepController = TextEditingController();
   String _response = '';
+
   Future<void> _sendCep() async {
     String cep = 'nulo';
     cep = _cepController.text;
     // Endpoint URL
-    String url = 'https://app-carlos-342ad7b4d60c.herokuapp.com/cep/$cep';
+    String url = 'app-carlos-342ad7b4d60c.herokuapp.com/cep2/$cep';
     try {
       // Send GET request
       http.Response response = await http.get(Uri.parse(url));
       // Parse JSON response
       // Map<String, dynamic> jsonResponse = jsonDecode(response.body);
       // Extract "cep" from JSON response
-      String cepResponse = 'FUNFOU';
+      // String cepResponse = 'FUNFOU';
       print((response.statusCode));
       // String cepResponse = jsonResponse['cep'];
       setState(() {
-        _response = cepResponse;
+        _response = 'sucesso';
       });
     } catch (e) {
       setState(() {
         _response = 'Erro ao enviar o CEP.';
       });
-
-
     }
-
-
-    // await requisicaoNovaParaTeste();
-
   }
 
   Future<void> requisicaoNovaParaTeste() async {
@@ -49,6 +45,7 @@ class _CepEnvioState extends State<CepEnvio> {
       print('Erro ao fazer a requisição: ${response.statusCode}');
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

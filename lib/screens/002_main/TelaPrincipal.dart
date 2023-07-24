@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/screens/003_register/products/TelaProdutos.dart';
 
+import 'IconWithLabel.dart';
+
 class TelaPrincipal extends StatefulWidget {
   @override
   _TelaPrincipalState createState() => _TelaPrincipalState();
@@ -135,24 +137,160 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
     return BottomNavigationBar(
       currentIndex: _currentIndex,
       onTap: (int index) {
-        setState(() {
-          _currentIndex = index;
-        });
+        if (index == 1) {
+          // Abra o menu suspenso que ocupa 50% da tela
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return Dialog(
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.5,
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Text('Novo'),
+                        ],
+                      ),
+                      SizedBox(height: 10.0),
+                      Row(
+                        children: [
+                          Text('Pedido'),
+                        ],
+                      ),
+                      SizedBox(height: 10.0),
+                      botoesDePedido(),
+                      SizedBox(height: 10.0),
+                      Row(
+                        children: [
+                          Text('Cadastro'),
+                        ],
+                      ),
+                      SizedBox(height: 10.0),
+                      itensDeCadastro()
+                    ],
+                  ),
+                ),
+              );
+            },
+          );
+        }
       },
       items: [
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
-          label: 'Home',
+          label: 'BT1',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.search),
-          label: 'Buscar',
+          label: 'NOVO',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
-          label: 'Perfil',
+          label: 'BT2',
         ),
       ],
+    );
+  }
+
+  Center itensDeCadastro() {
+    return Center(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          IconWithLabel(
+            icon: Icons.home,
+            label: 'Receita',
+          ),
+          SizedBox(width: 10),
+          IconWithLabel(
+            icon: Icons.search,
+            label: 'Despesa',
+          ),
+          SizedBox(width: 10),
+          IconWithLabel(
+            icon: Icons.favorite,
+            label: 'Agenda',
+          ),
+          SizedBox(width: 10),
+          IconWithLabel(
+            icon: Icons.shopping_cart,
+            label: 'Serviço',
+          ),
+          SizedBox(width: 10),
+          IconWithLabel(
+            icon: Icons.person,
+            label: 'Produto',
+          ),
+        ],
+      ),
+    );
+  }
+
+  Container botoesDePedido() {
+    return Container(
+      height: MediaQuery.of(context).size.height / 5,
+      width: MediaQuery.of(context).size.width,
+      child: Row(
+        children: [
+          Expanded(
+            child: Column(
+              children: [
+                Expanded(
+                  child: Container(
+                    child: cardDePedido('Serviço'),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    child: cardDePedido('Venda'),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            width: 10,
+          ),
+          Expanded(
+            child: Container(
+              child: Card(
+                child: Padding(
+                  padding: EdgeInsets.only(top: 10, bottom: 10),
+                  child: Row(
+                    children: [
+                      Icon(Icons.ac_unit_rounded),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text('PDV'),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Card cardDePedido(String texto) {
+    return Card(
+      elevation: 2,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.ac_unit_rounded),
+            SizedBox(
+              width: 10,
+            ),
+            Text(texto),
+          ],
+        ),
+      ),
     );
   }
 }

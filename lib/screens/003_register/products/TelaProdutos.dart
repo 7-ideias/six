@@ -24,7 +24,7 @@ class TelaProdutos extends StatelessWidget {
 
   ListView Tela(BuildContext context) {
     return ListView.builder(
-      itemCount: 100,
+      itemCount: 101,
       itemBuilder: (context, index) {
         return ProdutosList(context, index);
       },
