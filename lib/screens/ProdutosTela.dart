@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:untitled/screens/003_register/products/CadastroProduto.dart';
 import 'package:untitled/screens/003_register/products/DetalheProduto.dart';
 
-class TelaProdutos extends StatelessWidget {
+class ProdutosTela extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

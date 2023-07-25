@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/screens/003_register/products/TelaProdutos.dart';
 
 import 'IconWithLabel.dart';
 
@@ -65,13 +64,10 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
       title: Text(text),
       leading: Icon(icon),
       onTap: () => {
-        if (text == 'Produtos')
-          {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => TelaProdutos()),
-            )
-          }
+        if (text == 'Clientes') {Navigator.of(context).pushNamed('/clientes')}
+        else if (text == 'Produtos') {Navigator.of(context).pushNamed('/produtos')}
+        else if (text == 'Servicos') {Navigator.of(context).pushNamed('/servicos')}
+        else if (text == 'Settings') {Navigator.of(context).pushNamed('/configs')}
       },
     );
   }
@@ -238,12 +234,12 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
               children: [
                 Expanded(
                   child: Container(
-                    child: cardDePedido('Serviço'),
+                    child: getCardDePedido('Serviço'),
                   ),
                 ),
                 Expanded(
                   child: Container(
-                    child: cardDePedido('Venda'),
+                    child: getCardDePedido('Venda'),
                   ),
                 ),
               ],
@@ -255,17 +251,21 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
           Expanded(
             child: Container(
               child: Card(
-                child: Padding(
-                  padding: EdgeInsets.only(top: 10, bottom: 10),
-                  child: Row(
-                    children: [
-                      Icon(Icons.ac_unit_rounded),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text('PDV'),
-                    ],
-                  ),
+                elevation: 2,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.accessibility),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text('PDV'),
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -275,7 +275,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
     );
   }
 
-  Card cardDePedido(String texto) {
+  Card getCardDePedido(String texto) {
     return Card(
       elevation: 2,
       child: Padding(
@@ -283,7 +283,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.ac_unit_rounded),
+            Icon(Icons.abc_rounded),
             SizedBox(
               width: 10,
             ),
