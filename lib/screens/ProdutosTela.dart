@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/screens/003_register/products/CadastroProduto.dart';
 import 'package:untitled/screens/003_register/products/DetalheProduto.dart';
 
 class ProdutosTela extends StatelessWidget {
@@ -12,10 +11,7 @@ class ProdutosTela extends StatelessWidget {
       body: Tela(context),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => CadastroProduto()),
-          );
+          Navigator.of(context).pushNamed('/cadastro_produto');
         },
         child: Icon(Icons.add),
       ),

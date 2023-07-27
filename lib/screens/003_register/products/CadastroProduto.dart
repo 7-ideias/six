@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/BaseClient.dart';
+import '../../../dtos/ProdutoDto.dart';
+
 class CadastroProduto extends StatefulWidget {
   @override
   _CadastroProdutoState createState() => _CadastroProdutoState();
 }
 class _CadastroProdutoState extends State<CadastroProduto> {
-  String _nomeProduto = '';
-  String _descricaoProduto = '';
+
+  ProdutoDto _meuProduto = ProdutoDto();
+  String _resposta = 'sem resposta';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,39 +21,81 @@ class _CadastroProdutoState extends State<CadastroProduto> {
         padding: EdgeInsets.all(16.0),
         child: Column(
           children: [
-            TextField(
-              onChanged: (value) {
-                setState(() {
-                  _nomeProduto = value;
-                });
-              },
-              decoration: InputDecoration(
-                labelText: 'Nome do Produto',
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  onChanged: (value) {
+                    setState(() {
+                      _meuProduto.nomeProduto = value;
+                    });
+                  },
+                  decoration: InputDecoration(
+                    labelText: 'nome do Produto',
+                  ),
+                ),
               ),
             ),
             SizedBox(height: 16.0),
-            TextField(
-              onChanged: (value) {
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  onChanged: (value) {
+                    setState(() {
+                      _meuProduto.precoDeVenda = value;
+                    });
+                  },
+                  decoration: InputDecoration(
+                    labelText: 'valor de venda',
+                  ),
+                ),
+              ),
+            ),
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  onChanged: (value) {
+                    setState(() {
+                      _meuProduto.precoDeCusto = value;
+                    });
+                  },
+                  decoration: InputDecoration(
+                    labelText: 'valor de custo',
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 16.0),
+            Text(_resposta),
+            ElevatedButton(
+              onPressed: () async {
+                var response = await BaseClient().get('').catchError((err){debugPrint(err.toString());});
+                if(response == null) return;
+                debugPrint('sucesso!!!!');
                 setState(() {
-                  _descricaoProduto = value;
+                  _resposta = 'sucesso';
                 });
               },
-              decoration: InputDecoration(
-                labelText: 'Descrição do Produto',
-              ),
+              child: Text('Enviar Produto'),
             ),
             SizedBox(height: 16.0),
             ElevatedButton(
-              onPressed: () {
-                // Implemente a lógica para salvar o produto
-                print('Nome do Produto: $_nomeProduto');
-                print('Descrição do Produto: $_descricaoProduto');
+              onPressed: () async {
+                var response = await BaseClient().get('').catchError((err){debugPrint(err.toString());});
+                if(response == null) return;
+                debugPrint('sucesso!!!!');
+                setState(() {
+                  _resposta = 'sucesso';
+                });
               },
-              child: Text('Salvar'),
+              child: Text('Enviar API'),
             ),
           ],
         ),
       ),
     );
   }
+
 }

@@ -21,7 +21,7 @@ class ClientesTela extends StatelessWidget {
               child: IconButton(
                 icon: Icon(Icons.add),
                 onPressed: () {
-                  // Lógica quando o segundo ícone é pressionado
+                  Navigator.of(context).pushNamed('/cadcliente');
                 },
               ),
             ),

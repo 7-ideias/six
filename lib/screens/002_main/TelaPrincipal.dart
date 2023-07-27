@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'IconWithLabel.dart';
@@ -10,19 +12,49 @@ class TelaPrincipal extends StatefulWidget {
 class _TelaPrincipalState extends State<TelaPrincipal> {
   int _currentIndex = 0;
 
+  Color _currentColor = Colors.red;
+
+  @override
+  void initState() {
+    super.initState();
+    Timer.periodic(Duration(seconds: 1), (timer) {
+      setState(() {
+        _currentColor = _currentColor == Colors.red ? Colors.white : Colors.red;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Tela Principal'),
       ),
-      body: tela(),
+      body: tela2(),
       drawer: menuLateral(context),
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            onPressed: () {
+              // Lógica para quando o botão do carrinho de compras for pressionado
+            },
+            child: Icon(Icons.shopping_cart),
+          ),
+          SizedBox(height: 10),
+          FloatingActionButton(
+            onPressed: () {
+              // Lógica para quando o botão de adição for pressionado
+            },
+            child: Icon(Icons.add),
+          ),
+        ],
+      ),
       bottomNavigationBar: buildBottomNavigationBar(),
     );
   }
 
-  Container menuLateral(BuildContext context) {
+  Widget menuLateral(BuildContext context) {
     return Container(
       color: Colors.white,
       width: MediaQuery.of(context).size.width * 0.8,
@@ -59,20 +91,24 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
     );
   }
 
-  ListTile opcaoDaBarraLateral(String text, IconData icon) {
+  Widget opcaoDaBarraLateral(String text, IconData icon) {
     return ListTile(
       title: Text(text),
       leading: Icon(icon),
       onTap: () => {
-        if (text == 'Clientes') {Navigator.of(context).pushNamed('/clientes')}
-        else if (text == 'Produtos') {Navigator.of(context).pushNamed('/produtos')}
-        else if (text == 'Servicos') {Navigator.of(context).pushNamed('/servicos')}
-        else if (text == 'Settings') {Navigator.of(context).pushNamed('/configs')}
+        if (text == 'Clientes')
+          {Navigator.of(context).pushNamed('/clientes')}
+        else if (text == 'Produtos')
+          {Navigator.of(context).pushNamed('/produtos')}
+        else if (text == 'Servicos')
+          {Navigator.of(context).pushNamed('/servicos')}
+        else if (text == 'Settings')
+          {Navigator.of(context).pushNamed('/configs')}
       },
     );
   }
 
-  Container imagemDaBarraLateral() {
+  Widget imagemDaBarraLateral() {
     return Container(
       child: UserAccountsDrawerHeader(
         accountName: Text("nome da conta"),
@@ -86,47 +122,14 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
     );
   }
 
-  Container tela() {
+  Widget tela() {
     return Container(
-      // color: Colors.white,
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Container(
-                      color: Colors.yellow,
-                      child: Center(
-                        child: Text('xxxxx'),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      color: Colors.redAccent,
-                      child: Center(
-                        child: Text('xxxxx'),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Container(
-                color: Colors.green,
-                child: Center(
-                  child: Text('yyyyyy'),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+        // color: Colors.white,
+        child: Container(
+      height: double.infinity,
+      width: double.infinity,
+      color: Colors.yellow,
+    ));
   }
 
   BottomNavigationBar buildBottomNavigationBar() {
@@ -189,7 +192,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
     );
   }
 
-  Center itensDeCadastro() {
+  Widget itensDeCadastro() {
     return Center(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -290,6 +293,48 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
             Text(texto),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget tela2() {
+    return Container(
+      color: Colors.yellow,
+      height: double.infinity,
+      width: double.infinity,
+      child: Column(
+        children: [
+          buildColorido(context),
+        ],
+      ),
+    );
+  }
+
+  double width() => 90;
+
+  Widget buildColorido(BuildContext context) {
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            width: 90,
+            height: 90,
+            margin: EdgeInsets.only(right: 20),
+            color: _currentColor,
+          ),
+          Container(
+            width: 90,
+            height: 90,
+            margin: EdgeInsets.only(right: 20),
+            color: _currentColor,
+          ),
+          Container(
+            width: 90,
+            height: 90,
+            color: _currentColor,
+          ),
+        ],
       ),
     );
   }
