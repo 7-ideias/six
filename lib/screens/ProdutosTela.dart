@@ -8,13 +8,7 @@ class ProdutosTela extends StatelessWidget {
       appBar: AppBar(
         title: Text('Produtos Cadastrados'),
       ),
-      body: Tela(context),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).pushNamed('/cadastro_produto');
-        },
-        child: Icon(Icons.add),
-      ),
+      body: Container(),
     );
   }
 

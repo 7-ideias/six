@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:untitled/utilitarios/MenuLateral.dart';
 
 import 'IconWithLabel.dart';
 
@@ -31,7 +32,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
         title: Text('Tela Principal'),
       ),
       body: tela2(),
-      drawer: menuLateral(context),
+      drawer: MenuLateral(context),
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
@@ -51,74 +52,6 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
         ],
       ),
       bottomNavigationBar: buildBottomNavigationBar(),
-    );
-  }
-
-  Widget menuLateral(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      width: MediaQuery.of(context).size.width * 0.8,
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          Container(
-            child: imagemDaBarraLateral(),
-          ),
-          opcaoDaBarraLateral('Clientes', Icons.abc_outlined),
-          opcaoDaBarraLateral('Produtos', Icons.verified_user),
-          opcaoDaBarraLateral('Servicos', Icons.account_box),
-          opcaoDaBarraLateral('Settings', Icons.settings),
-          ListTile(
-            leading: Icon(Icons.border_color),
-            title: Text('Feedback'),
-            onTap: () => {Navigator.of(context).pop()},
-          ),
-          ListTile(
-            leading: Icon(Icons.exit_to_app),
-            title: Text('Logout'),
-            onTap: () => {Navigator.of(context).pop()},
-          ),
-          ListTile(
-              // leading: Icon(Icons.star),
-              title: Text("Favoritos"),
-              subtitle: Text("meus favoritos..."),
-              trailing: Icon(Icons.arrow_forward),
-              onTap: () {
-                debugPrint('toquei no drawer');
-              })
-        ],
-      ),
-    );
-  }
-
-  Widget opcaoDaBarraLateral(String text, IconData icon) {
-    return ListTile(
-      title: Text(text),
-      leading: Icon(icon),
-      onTap: () => {
-        if (text == 'Clientes')
-          {Navigator.of(context).pushNamed('/clientes')}
-        else if (text == 'Produtos')
-          {Navigator.of(context).pushNamed('/produtos')}
-        else if (text == 'Servicos')
-          {Navigator.of(context).pushNamed('/servicos')}
-        else if (text == 'Settings')
-          {Navigator.of(context).pushNamed('/configs')}
-      },
-    );
-  }
-
-  Widget imagemDaBarraLateral() {
-    return Container(
-      child: UserAccountsDrawerHeader(
-        accountName: Text("nome da conta"),
-        accountEmail: Text("carlos@email.com.br"),
-        currentAccountPicture: CircleAvatar(
-          radius: 30.0,
-          backgroundImage: AssetImage('assets/carlosFotoPerfil_laranja.jpg'),
-          backgroundColor: Colors.transparent,
-        ),
-      ),
     );
   }
 

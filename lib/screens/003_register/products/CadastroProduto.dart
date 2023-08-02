@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/BaseClient.dart';
+
 import '../../../dtos/ProdutoDto.dart';
 
 class CadastroProduto extends StatefulWidget {
   @override
   _CadastroProdutoState createState() => _CadastroProdutoState();
 }
-class _CadastroProdutoState extends State<CadastroProduto> {
 
-  ProdutoDto _meuProduto = ProdutoDto();
+class _CadastroProdutoState extends State<CadastroProduto> {
+  // ProdutoDto _meuProduto = ProdutoDto(id: 'x',nomeProduto: 'xx');
   String _resposta = 'sem resposta';
 
   @override
@@ -27,7 +28,7 @@ class _CadastroProdutoState extends State<CadastroProduto> {
                 child: TextField(
                   onChanged: (value) {
                     setState(() {
-                      _meuProduto.nomeProduto = value;
+                      // _meuProduto.nomeProduto = value;
                     });
                   },
                   decoration: InputDecoration(
@@ -43,7 +44,7 @@ class _CadastroProdutoState extends State<CadastroProduto> {
                 child: TextField(
                   onChanged: (value) {
                     setState(() {
-                      _meuProduto.precoDeVenda = value;
+                      // _meuProduto.precoDeVenda = value;
                     });
                   },
                   decoration: InputDecoration(
@@ -58,7 +59,7 @@ class _CadastroProdutoState extends State<CadastroProduto> {
                 child: TextField(
                   onChanged: (value) {
                     setState(() {
-                      _meuProduto.precoDeCusto = value;
+                      // _meuProduto.precoDeCusto = value;
                     });
                   },
                   decoration: InputDecoration(
@@ -71,8 +72,10 @@ class _CadastroProdutoState extends State<CadastroProduto> {
             Text(_resposta),
             ElevatedButton(
               onPressed: () async {
-                var response = await BaseClient().get('').catchError((err){debugPrint(err.toString());});
-                if(response == null) return;
+                var response = await BaseClient().get('').catchError((err) {
+                  debugPrint(err.toString());
+                });
+                if (response == null) return;
                 debugPrint('sucesso!!!!');
                 setState(() {
                   _resposta = 'sucesso';
@@ -83,8 +86,10 @@ class _CadastroProdutoState extends State<CadastroProduto> {
             SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () async {
-                var response = await BaseClient().get('').catchError((err){debugPrint(err.toString());});
-                if(response == null) return;
+                var response = await BaseClient().get('').catchError((err) {
+                  debugPrint(err.toString());
+                });
+                if (response == null) return;
                 debugPrint('sucesso!!!!');
                 setState(() {
                   _resposta = 'sucesso';
@@ -92,10 +97,11 @@ class _CadastroProdutoState extends State<CadastroProduto> {
               },
               child: Text('Enviar API'),
             ),
+            SizedBox(height: 16.0),
+            // MyWidget(),
           ],
         ),
       ),
     );
   }
-
 }
