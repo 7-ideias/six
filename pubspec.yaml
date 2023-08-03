@@ -15,13 +15,22 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_local_notifications: ^13.0.0
   shared_preferences: ^2.0.6
-#  flutter_background: ^1.0.7
-#  timezone: ^0.8.0
-#  flutter_native_timezone: ^2.0.0
-#  provider:
   flutter_lints: ^2.0.0
   plugin_platform_interface: ^2.1.5
   syncfusion_flutter_charts: ^19.2.46
+
+  # create pdf document
+  pdf: ^3.1.0
+
+  # save file
+#  path_provider: ^2.0.1
+
+  # open pdf document
+  open_file: ^3.1.0
+
+  # format dates for invoice
+  intl: ^0.17.0
+
 flutter:
   assets:
     - assets/

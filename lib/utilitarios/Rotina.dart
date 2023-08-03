@@ -14,7 +14,7 @@ class Rotina {
     _timer = Timer.periodic(Duration(seconds: 10), (timer) {
       DateTime now = DateTime.now();
       print("ROTINA SENDO FEITA - Horário atual: ${now.hour}:${now.minute}:${now.second}");
-      chamarEndpoint();
+      // chamarEndpoint();//fixme
     });
   }
 

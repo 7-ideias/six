@@ -20,6 +20,7 @@ import 'package:untitled/screens/ServicosTela.dart';
 import 'package:untitled/screens/Teste.dart';
 import 'package:untitled/screens/VendaTela.dart';
 
+import '../../page/pdf_page.dart';
 import '../003_register/clientes/CadastroClienteTela.dart';
 import '../003_register/products/MyScreen.dart';
 import '../ProdutosTela2.dart';
@@ -51,6 +52,7 @@ class TelaDeCarregamentoPrincipal extends StatelessWidget {
         '/perfil': (_) => PerfilTela(),
         '/teste': (_) => Teste(),
         '/venda': (_) => VendaTela(),
+        '/pdf': (_) => PdfPage(),
       },
     );
   }
@@ -66,8 +68,8 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
     Timer(Duration(seconds: 1), () {
-      // Navigator.pushReplacementNamed(context, '/teste');
-      Navigator.pushReplacementNamed(context, '/login');
+      Navigator.pushReplacementNamed(context, '/pdf');
+      // Navigator.pushReplacementNamed(context, '/login');
     });
   }
 
