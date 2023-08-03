@@ -68,8 +68,8 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
     Timer(Duration(seconds: 1), () {
-      Navigator.pushReplacementNamed(context, '/pdf');
-      // Navigator.pushReplacementNamed(context, '/login');
+      // Navigator.pushReplacementNamed(context, '/pdf');
+      Navigator.pushReplacementNamed(context, '/login');
     });
   }
 
