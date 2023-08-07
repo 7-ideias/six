@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-class MenuLateral extends StatelessWidget {
+import 'package:untitled/utilitarios/traducao.dart';
 
+import 'VariaveisGlobais.dart';
+
+class MenuLateral extends StatelessWidget {
   MenuLateral(BuildContext context);
 
   @override
@@ -14,10 +17,14 @@ class MenuLateral extends StatelessWidget {
           Container(
             child: imagemDaBarraLateral(context),
           ),
-          opcaoDaBarraLateral(context,'Clientes', Icons.abc_outlined),
-          opcaoDaBarraLateral(context,'Produtos', Icons.verified_user),
-          opcaoDaBarraLateral(context,'Servicos', Icons.account_box),
-          opcaoDaBarraLateral(context,'Settings', Icons.settings),
+          opcaoDaBarraLateral(context, 'Clientes', Icons.abc_outlined),
+          opcaoDaBarraLateral(context, 'Produtos', Icons.verified_user),
+          opcaoDaBarraLateral(context, 'Serviços', Icons.account_box),
+          opcaoDaBarraLateral(
+              context,
+              Traducao.retornaPalavra("configuração", VariaveisGlobais.idioma),
+              Icons.settings),
+          opcaoDaBarraLateral(context, 'desenvolvedor', Icons.account_box),
           ListTile(
             leading: const Icon(Icons.border_color),
             title: Text('Feedback'),
@@ -29,7 +36,7 @@ class MenuLateral extends StatelessWidget {
             onTap: () => {Navigator.of(context).pop()},
           ),
           ListTile(
-            // leading: Icon(Icons.star),
+              // leading: Icon(Icons.star),
               title: Text("Favoritos"),
               subtitle: Text("meus favoritos..."),
               trailing: Icon(Icons.arrow_forward),
@@ -65,10 +72,12 @@ Widget opcaoDaBarraLateral(BuildContext context, String text, IconData icon) {
         {Navigator.of(context).pushNamed('/clientes')}
       else if (text == 'Produtos')
         {Navigator.of(context).pushNamed('/produtos')}
-      else if (text == 'Servicos')
-          {Navigator.of(context).pushNamed('/servicos')}
-        else if (text == 'Settings')
-            {Navigator.of(context).pushNamed('/configs')}
+      else if (text == 'Serviços')
+        {Navigator.of(context).pushNamed('/servicos')}
+      else if (text == 'Settings')
+        {Navigator.of(context).pushNamed('/configs')}
+      else if (text == 'desenvolvedor')
+        {Navigator.of(context).pushNamed('/desenvolvedor')}
     },
   );
 }

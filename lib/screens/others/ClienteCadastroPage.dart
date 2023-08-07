@@ -110,10 +110,10 @@ class _CadastroClientePageState extends State<CadastroClientePage> {
               SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => TelaLoginTeste()),
-                  );
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) => TelaLoginTeste()),
+                  // );
                 },
                 child: Text('nova tela login'),
               ),

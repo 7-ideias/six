@@ -5,4 +5,5 @@ class VariaveisGlobais {
   // static final String endPoint = 'http://localhost:8082';
 
   static Map<String, String> headers() => {"Content-Type": "application/json"};
+  static String idioma = "ingles";
 }

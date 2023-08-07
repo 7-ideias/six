@@ -8,6 +8,7 @@ import '../model/customer.dart';
 import '../model/invoice.dart';
 import '../model/supplier.dart';
 import '../utilitarios/utils.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class PdfInvoiceApi {
   static Future<File> generate(Invoice invoice) async {

@@ -10,4 +10,5 @@ class ProdutoDto {
       nomeProduto: json['nomeProduto'],
     );
   }
+
 }

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/screens/002_main/TelaPrincipal2.dart';
 
-import '../002_main/TelaPrincipal.dart';
-
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -29,7 +27,7 @@ class _LoginPageState extends State<LoginPage> {
       // Chamar a página de cadastro do cliente
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => TelaPrincipal()),
+        MaterialPageRoute(builder: (context) => TelaPrincipal2()),
       );
     } else {
       // Campos inválidos, exibir mensagem de erro ou tomar a ação necessária

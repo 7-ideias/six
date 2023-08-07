@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:untitled/service/NotificationService.dart';
 import 'package:untitled/utilitarios/VariaveisGlobais.dart';
-import '../dtos/PushDto.dart';
+import '../dtos/push_dto.dart';
 
 class Rotina {
   late Timer _timer;
@@ -13,8 +13,8 @@ class Rotina {
   void iniciarRotina() {
     _timer = Timer.periodic(Duration(seconds: 10), (timer) {
       DateTime now = DateTime.now();
-      // print("ROTINA SENDO FEITA - Horário atual: ${now.hour}:${now.minute}:${now.second}");
-      // chamarEndpoint();//fixme
+      print("ROTINA SENDO FEITA - Horário atual: ${now.hour}:${now.minute}:${now.second}");
+      chamarEndpoint();//fixme
     });
   }
 
