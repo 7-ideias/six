@@ -12,26 +12,44 @@ class _TelaInicioState extends State<TelaInicio> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('jornada')),
-      body: Container(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: Container(
+              child: Column(
+                children: [
+                  buildSizedBox(context, Colors.indigo, 'Novo por aqui'),
+                  SizedBox(
+                    height: 50,
+                  ),
+                  buildSizedBox(context, Colors.red, 'Já tenho uma conta'),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget buildSizedBox(
+      BuildContext context, MaterialColor color, String texto) {
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * 0.2,
+      width: MediaQuery.of(context).size.height * 0.2,
+      child: Container(
+        color: color,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            buildSizedBox(context,Colors.indigo),
-            buildSizedBox(context,Colors.red),
+            Text(
+              texto,
+              style: TextStyle(fontSize: 22),
+            )
           ],
         ),
       ),
     );
   }
-
-  SizedBox buildSizedBox(BuildContext context, MaterialColor color) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.3,
-      width: MediaQuery.of(context).size.height * 0.3,
-      child: Container(
-        color: color,
-      ),
-    );
-  }
-
-
 }
